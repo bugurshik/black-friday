@@ -91,33 +91,3 @@ db.runCommand({
 sh.addShard("new-shard-hostname:27018") // Создать новый шард
 sh.status() // сразу проверь
 ```
-opcounters
-(insert/update/query/delete)
-Интенсивность операций по типам
-db.serverStatus().opcounters
-currentQueueSize
-(total/reader/writer)
-Текущее количество активных операций
-db.serverStatus().globalLock.currentQueue
-activeClients
-Количество активных клиентских соединений
-db.serverStatus().globalLock.activeClients
-networkIn/networkOut
-Объём входящего/исходящего сетевого трафика
-db.serverStatus().network
-shardCollectionStats
-Статистика по коллекциям в каждом шарде
-db.collection.stats()
-chunkDistribution
-Распределение чанков по шардам
-sh.status()
-queryLatency
-Задержка выполнения запросов
-db.collection.aggregate([{$indexStats: {}}])
-connectionCount
-Число активных соединений на шард
-db.currentOp()
-/
-db.serverStatus().connections
-
-✅ Рекомендуется использовать MongoDB Atlas Monitoring , Prometheus + MongoDB Exporter , или Percona Monitoring and Management (PMM) для сбора и визуализации этих метрик. 
