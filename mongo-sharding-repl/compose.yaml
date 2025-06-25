@@ -3,7 +3,7 @@ services:
     container_name: mongo-sharding-repl
     image: dh-mirror.gitverse.ru/mongo:latest
     volumes:
-      - mongodb1_data_container:/data/db
+      - mongo-sharding-repl_data_container:/data/db
 
   pymongo_api:
     container_name: pymongo_api
@@ -80,7 +80,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.8
     volumes:
-      - shard1-data:/data/db
+      - shard1-data1:/data/db
     command:
       [
         "--shardsvr",
@@ -105,7 +105,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.9
     volumes:
-      - shard1-data:/data/db
+      - shard1-data2:/data/db
     command:
       [
         "--shardsvr",
@@ -130,7 +130,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.10
     volumes:
-      - shard1-data:/data/db
+      - shard1-data3:/data/db
     command:
       [
         "--shardsvr",
@@ -156,7 +156,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.11
     volumes:
-      - shard2-data:/data/db
+      - shard2-data1:/data/db
     command:
       [
         "--shardsvr",
@@ -181,7 +181,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.12
     volumes:
-      - shard2-data:/data/db
+      - shard2-data2:/data/db
     command:
       [
         "--shardsvr",
@@ -206,7 +206,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.13
     volumes:
-      - shard2-data:/data/db
+      - shard2-data3:/data/db
     command:
       [
         "--shardsvr",
@@ -232,6 +232,10 @@ networks:
 
 volumes:
   config-data:
-  shard1-data:
-  shard2-data:
-  mongodb1_data_container:
+  shard1-data1:
+  shard1-data2:
+  shard1-data3:
+  shard2-data1:
+  shard2-data2:
+  shard2-data3:
+  mongo-sharding-repl_data_container:

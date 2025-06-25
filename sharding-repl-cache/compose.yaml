@@ -81,7 +81,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.8
     volumes:
-      - shard1-data:/data/db
+      - shard1-data1:/data/db
     command:
       [
         "--shardsvr",
@@ -106,7 +106,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.9
     volumes:
-      - shard1-data:/data/db
+      - shard1-data2:/data/db
     command:
       [
         "--shardsvr",
@@ -131,7 +131,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.10
     volumes:
-      - shard1-data:/data/db
+      - shard1-data3:/data/db
     command:
       [
         "--shardsvr",
@@ -157,7 +157,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.11
     volumes:
-      - shard2-data:/data/db
+      - shard2-data1:/data/db
     command:
       [
         "--shardsvr",
@@ -182,7 +182,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.12
     volumes:
-      - shard2-data:/data/db
+      - shard2-data2:/data/db
     command:
       [
         "--shardsvr",
@@ -207,7 +207,7 @@ services:
       app-network:
         ipv4_address: 173.17.0.13
     volumes:
-      - shard2-data:/data/db
+      - shard2-data3:/data/db
     command:
       [
         "--shardsvr",
@@ -284,8 +284,12 @@ networks:
 
 volumes:
   config-data:
-  shard1-data:
-  shard2-data:
+  shard1-data1:
+  shard1-data2:
+  shard1-data3:
+  shard2-data1:
+  shard2-data2:
+  shard2-data3:
   redis_1_data: {}
   redis_2_data: {}
   redis_3_data: {}
