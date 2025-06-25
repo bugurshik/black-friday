@@ -14,6 +14,13 @@ docker compose up -d
 ./scripts/mongo-init.sh
 ```
 
+Инициализируем 2 шарда
+
+```shell
+./scripts/shards-init.sh
+```
+
+
 ## Как проверить
 
 ### Если вы запускаете проект на локальной машине

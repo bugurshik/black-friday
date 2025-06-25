@@ -14,6 +14,18 @@ docker compose up -d
 ./scripts/mongo-init.sh
 ```
 
+Инициализируем 2 шарда
+
+```shell
+./scripts/shards-init.sh
+```
+
+Инициализируем репликацию для 2-х шардов
+
+```shell
+./scripts/replicas-init.sh
+```
+
 ## Как проверить
 
 ### Если вы запускаете проект на локальной машине

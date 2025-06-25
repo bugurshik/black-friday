@@ -119,7 +119,7 @@ services:
       test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
       interval: 5s
       start_period: 10s
-     
+        
   shard1_node3:
     image: mongo:latest
     container_name: shard1_node3
