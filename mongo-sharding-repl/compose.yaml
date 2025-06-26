@@ -1,10 +1,4 @@
 services:
-  mongo-sharding-repl:
-    container_name: mongo-sharding-repl
-    image: dh-mirror.gitverse.ru/mongo:latest
-    volumes:
-      - mongo-sharding-repl_data_container:/data/db
-
   pymongo_api:
     container_name: pymongo_api
     build: 
@@ -15,13 +9,16 @@ services:
       - mongos_router
     ports:
       - 8080:8080
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.5
     environment:
       MONGODB_URL: "mongodb://mongos_router:27020"
       MONGODB_DATABASE_NAME: "somedb"
 
   #//сервер конфигурации
   configSrv:
-    image: mongo:latest # docker образ
+    image: mongo:latest 
     container_name: configSrv 
     restart: always
     ports:
