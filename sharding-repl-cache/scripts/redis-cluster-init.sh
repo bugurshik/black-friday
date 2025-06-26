@@ -1,4 +1,3 @@
-
 docker exec -it redis_1 bash -c "
 echo 'Делаем рассчёт хэш слотов и создаём кластер...'
 echo 'yes' | redis-cli --cluster create \

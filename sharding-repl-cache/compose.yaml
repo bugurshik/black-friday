@@ -15,6 +15,9 @@ services:
       - mongos_router
     ports:
       - 8080:8080
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.5
     environment:
       REDIS_URL: "redis://redis_1:6379" 
       MONGODB_URL: "mongodb://mongos_router:27020"
