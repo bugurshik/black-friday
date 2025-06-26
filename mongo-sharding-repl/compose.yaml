@@ -125,7 +125,7 @@ services:
     container_name: shard1_node3
     restart: always
     ports:
-      - "27020:27020"
+      - "27030:27030"
     networks:
       app-network:
         ipv4_address: 173.17.0.10
@@ -138,7 +138,7 @@ services:
         "shard1",
         "--bind_ip_all",
         "--port",
-        "27020"
+        "27030"
       ]
     healthcheck:
       test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]

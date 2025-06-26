@@ -3,7 +3,7 @@ services:
     container_name: sharding-repl-cache
     image: dh-mirror.gitverse.ru/mongo:latest
     volumes:
-      - mongodb1_data_container:/data/db
+      - sharding-repl-cache_data_container:/data/db
 
   pymongo_api:
     container_name: pymongo_api
@@ -126,7 +126,7 @@ services:
     container_name: shard1_node3
     restart: always
     ports:
-      - "27020:27020"
+      - "27030:27030"
     networks:
       app-network:
         ipv4_address: 173.17.0.10
@@ -139,7 +139,7 @@ services:
         "shard1",
         "--bind_ip_all",
         "--port",
-        "27020"
+        "27030"
       ]
     healthcheck:
       test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
@@ -274,6 +274,32 @@ services:
       app-network:
         ipv4_address: 173.17.0.17
 
+  redis_5:
+    image: "redis:latest"
+    container_name: redis_5
+    ports:
+      - "6379"
+    volumes:
+      - redis_5_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.18
+
+  redis_6:
+    image: "redis:latest"
+    container_name: redis_6
+    ports:
+      - "6379"
+    volumes:
+      - redis_6_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.19
+
 networks:
   app-network:
     driver: bridge
@@ -294,4 +320,6 @@ volumes:
   redis_2_data: {}
   redis_3_data: {}
   redis_4_data: {}
-  mongodb1_data_container:
+  redis_5_data: {}
+  redis_6_data: {}
+  sharding-repl-cache_data_container:
