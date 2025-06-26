@@ -8,22 +8,10 @@
 docker compose up -d
 ```
 
-Заполняем mongodb данными
+Запустить 2 шарда монго с 3 репликами
 
 ```shell
-./scripts/mongo-init.sh
-```
-
-Инициализируем 2 шарда
-
-```shell
-./scripts/shards-init.sh
-```
-
-Инициализируем репликацию для 2-х шардов
-
-```shell
-./scripts/replicas-init.sh
+./scripts/shards-repl-init.sh
 ```
 
 ## Как проверить

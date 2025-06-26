@@ -8,13 +8,7 @@
 docker compose up -d
 ```
 
-Заполняем mongodb данными
-
-```shell
-./scripts/mongo-init.sh
-```
-
-Инициализируем 2 шарда
+Инициализируем
 
 ```shell
 ./scripts/shards-init.sh
