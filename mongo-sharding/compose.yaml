@@ -11,13 +11,15 @@ services:
         ipv4_address: 173.17.0.10
     volumes:
       - config-data:/data/db
-      - ./scripts/init-configSrv.js:/docker-entrypoint-initdb.d/init-configSrv.js
-    command: |
-      sh -c "
-        mongod --configsvr --replSet config_server --bind_ip_all --port 27017 &
-        sleep 5
-        mongosh -f /docker-entrypoint-initdb.d/init-configSrv.js
-      "
+    command:
+      [
+       "--configsvr",
+        "--replSet",
+        "config_server",
+        "--bind_ip_all",
+        "--port",
+        "27017"
+      ]
     healthcheck:
       test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
       interval: 5s
@@ -35,7 +37,6 @@ services:
         ipv4_address: 173.17.0.9
     volumes:
       - shard1-data:/data/db
-      - ./scripts/shard1-config.js:/docker-entrypoint-initdb.d/shard1-config.js
     command:
       [
         "--shardsvr",
@@ -62,7 +63,6 @@ services:
         ipv4_address: 173.17.0.8
     volumes:
       - shard2-data:/data/db
-      - ./scripts/shard2-config.js:/docker-entrypoint-initdb.d/shard2-config.js
     command:
       [
         "--shardsvr",
