@@ -8,10 +8,15 @@
 docker compose up -d
 ```
 
-Заполняем mongodb данными
+Запустить 2 шарда монго с 3 репликами
 
-```shell
-./scripts/mongo-init.sh
+```bash
+./scripts/shards-repl-init.sh
+```
+
+Запустить кластер Redis
+```bash
+./scripts/redis-cluster-init.sh
 ```
 
 ## Как проверить
@@ -20,16 +25,5 @@ docker compose up -d
 
 Откройте в браузере http://localhost:8080
 
-### Если вы запускаете проект на предоставленной виртуальной машине
-
-Узнать белый ip виртуальной машины
-
-```shell
-curl --silent http://ifconfig.me
-```
-
-Откройте в браузере http://<ip виртуальной машины>:8080
-
-## Доступные эндпоинты
-
-Список доступных эндпоинтов, swagger http://<ip виртуальной машины>:8080/docs
+# Описание и документация
+(Архитектурный документ)[/ARCH-DOCK.md]
